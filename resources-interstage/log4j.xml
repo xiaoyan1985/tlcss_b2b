@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+<!-- Appender settings -->
+  <!-- Console Appender -->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="TRACE"/>
+    <layout class="org.apache.log4j.PatternLayout">
+	    <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{requestURL} %-5p %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- TraceLog -->
+  <appender name="TraceLog" class="org.apache.log4j.RollingFileAppender">
+    <param name="Append" value="true" />
+    <param name="MaxFileSize" value="1MB" />
+    <param name="maxBackupIndex" value="10" />
+    <param name="File" value="/home/tomcat/TORES/logs/TORESTrace.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %X{header} %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+        <param name="levelMin" value="DEBUG"/>
+        <param name="levelMax" value="INFO"/>
+        <param name="acceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+
+  <!-- ErrorLog -->
+  <appender name="ErrorLog" class="org.apache.log4j.RollingFileAppender">
+    <param name="Append" value="true" />
+    <param name="MaxFileSize" value="1MB" />
+    <param name="maxBackupIndex" value="3" />
+    <param name="File" value="/home/tomcat/TORES/logs/TORESErrorLog.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %X{header} %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+        <param name="levelMin" value="WARN"/>
+        <param name="levelMax" value="FATAL"/>
+        <param name="acceptOnMatch" value="true"/>
+    </filter>
+  </appender>
+
+  <!-- application log -->
+  <category
+      name="jp.co.victokai.commons"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="TraceLog"/>
+    <appender-ref ref="ErrorLog"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+  <category
+      name="jp.co.tokaigroup"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="TraceLog"/>
+    <appender-ref ref="ErrorLog"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+   <!--Spring Transaction debug log -->
+   <category
+      name="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+  <category
+      name="jp.co.victokai.commons.db"
+      additivity="false">
+    <priority value="INFO"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+  <!--method trace log -->
+  <category
+      name="jp.co.tokaigroup.si.fw.aop"
+      additivity="false">
+    <priority value="TRACE"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+
+  <!-- other -->
+  <root>
+    <priority value="DEBUG"/>
+    <appender-ref ref="TraceLog"/>
+    <appender-ref ref="ErrorLog"/>
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</log4j:configuration>

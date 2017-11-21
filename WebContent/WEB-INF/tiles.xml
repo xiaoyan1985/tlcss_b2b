@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+       
+<tiles-definitions>
+	<!--  標準レイアウト -->
+	<definition name="default.layout" template="/WEB-INF/common/jsp/layout.jsp">
+		<put-attribute name="title" value="TLCサポートシステム　不動産管理会社、業者向けサイト" />
+		<put-attribute name="script" value=""/>
+		<put-attribute name="header" value="/WEB-INF/common/jsp/header.jsp" />
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/common/jsp/footer.jsp" />
+	</definition>
+
+	<!--  メニューレイアウト -->
+	<definition name="menu.layout" template="/WEB-INF/common/jsp/manu_layout.jsp">
+		<put-attribute name="title" value="TLCサポートシステム　不動産管理会社、業者向けサイト" />
+		<put-attribute name="script" value=""/>
+		<put-attribute name="header" value="/WEB-INF/common/jsp/menu_header.jsp" />
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/common/jsp/footer.jsp" />
+	</definition>
+
+	<!--  シンプルレイアウト -->
+	<definition name="simple.layout" template="/WEB-INF/common/jsp/simple_layout.jsp">
+		<put-attribute name="title" value="TLCサポートシステム　不動産管理会社、業者向けサイト" />
+		<put-attribute name="script" value=""/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/common/jsp/footer.jsp" />
+	</definition>
+
+</tiles-definitions>

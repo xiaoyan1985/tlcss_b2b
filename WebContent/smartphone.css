@@ -1,0 +1,169 @@
+/*
+Simple Grid
+Learn More - http://dallasbass.com/simple-grid-a-lightweight-responsive-css-grid/
+Project Page - http://thisisdallas.github.com/Simple-Grid/
+Author - Dallas Bass
+Site - dallasbass.com
+*/
+/** for SmartPhone **/
+@media handheld, only screen and (max-width: 639px) {
+	.font2 {font-size:12pt; font-weight:bold; color:#333399;}								/* å©èoÇµópÅiçÆÉtÉHÉìÉg9ëæéöÅj */
+
+	.font12{font-size:14pt;}							/*  */
+
+	tbody.pc_header {display:none;}
+	tbody.mobile_header {display:inline;}
+
+	.copyright{font-family:'arial', sans-serif;font-size:9pt;}
+
+	body	{color:#7A6A6C;
+				background-color:#EFEFEF;
+				font-size:14pt;
+				font-family:'Lucida Grande',
+							 'Hiragino Kaku Gothic ProN', 'ÉqÉâÉMÉmäpÉS ProN W3',
+							 Meiryo, ÉÅÉCÉäÉI, 'Droid Sans', sans-serif;
+				text-align: center;}
+	h2          {font-size:14pt;  }
+	td          {border:1px #ffffff solid; padding:2px;font-size: 14pt;}
+	td.lastUpdatedBy{font-size: 10pt;}
+
+	th          {border:1px #ffffff solid; padding:2px;font-size: 14pt; }
+	div#wrapper { width:100%;text-align:left; border:1px solid #AAAAAA; margin:0% auto; background-color:#FFFFFF;}
+	div.lastUpdatedBy{font-size: 10pt;}
+
+	span.required {float:right;display:inline;font-size:12pt;}
+	span.required_remark {display:none;}
+	span.remarks       {font-size:12pt; color:#ff0000;}
+	span.iPad_display  {display:none;}
+
+	.font11 {display:none;}
+
+	input[type="text"] {
+		font-size: 12pt;
+		height: 2em;
+		vertical-align:middle;
+	}
+
+	select {
+		font-size: 12pt;
+	    height: 2em;
+		vertical-align:middle;
+	}
+
+	input[type="checkbox"] {
+	    width: 25px !important;
+	}
+	input[type="radio"] {
+	    width: auto !important;
+		vertical-align:middle;
+	}
+
+	input[type="button"],input[type="submit"] {
+		font-size:14pt;
+		height:44px;
+	}
+
+	input[type="password"] {
+		font-size: 12pt;
+		height: 2em;
+		vertical-align:middle;
+	}
+
+	a:link{font-size:14pt;}
+	a:visited{font-size:14pt;}
+
+	.w10per {
+		width: 20%;
+	}
+
+    .grid {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+    }
+
+    [class*='col-'] {
+		font-size:14pt;
+		width: auto;
+		float: none;
+		text-align:left;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+    }
+
+	table.warning {width:100%;}
+
+	div#footer {
+		width:100%;
+		text-align:left;
+		border-top:1px solid #AAAAAA;
+		margin:0px;
+		background:#FFFFFF;
+		height:70px;
+	}
+
+	.btnSubmit {
+		width:120px;
+	}
+
+	.login {
+		width: 100%;
+		margin: 0 auto;
+		overflow: visible;
+	}
+
+	.col-login-left {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.col-login-right {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	span.headTitle {
+		font-size:10pt;
+	}
+
+	.information {
+		width: 100%;
+		height: 150px;
+		border: 2px #87CEEB solid;
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+		overflow: auto;
+	}
+
+	.menuTitle1 {
+		font-size: 11pt;
+	}
+
+	.menuTitle2 {
+		font-size: 11pt;
+	}
+
+	input.help {
+		font-size: 9pt;
+	}
+
+	td.mobile_title {
+		width: 60%;
+	}
+
+	td.mobile_logout {
+		width: 40%;
+	}
+
+	textarea.readOnlyText {
+		font-size: 0.9em;
+	}
+}

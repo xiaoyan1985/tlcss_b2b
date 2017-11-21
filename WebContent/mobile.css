@@ -1,0 +1,154 @@
+/*
+Simple Grid
+Learn More - http://dallasbass.com/simple-grid-a-lightweight-responsive-css-grid/
+Project Page - http://thisisdallas.github.com/Simple-Grid/
+Author - Dallas Bass
+Site - dallasbass.com
+*/
+*, *:after, *:before {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+div#header   {
+ height:70px; }
+div#contents { text-align:left; margin:0px; padding:10px 20px;}
+
+
+
+[class*='col-'] {
+        float: left;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+
+        padding-right: 0px;
+}
+
+[class*='col-']:last-of-type {
+        padding-right: 0px;
+}
+
+.grid {
+        width: 100%;
+        max-width: 1140px;
+        min-width: 755px;
+        margin: 0 auto;
+        overflow: hidden;
+}
+
+.login {
+        width: 45%;
+        margin: 0 auto;
+        overflow: hidden;
+}
+
+.login_title {
+	font-size:24pt;
+}
+.grid:after {
+        content: "";
+        display: table;
+        clear: both;
+}
+
+.grid-pad {
+        padding: 0px 0 0px 0px;
+}
+
+.grid-pad > [class*='col-']:last-of-type {
+        padding-right: 0px;
+}
+
+.push-right {
+        float: right;
+}
+
+/* Content Columns */
+
+
+
+.col-login-left {
+        width: 25%;
+		font-weight:bold;
+		padding:2px;font-size: 9pt; background-color:#D7ECF4; color:515151;
+		max-width: 25%;
+}
+
+.col-login-right {
+        width: 75%;
+        padding-left: 5px;
+        max-width: 75%;
+}
+
+.col-2-left, .col-4-left1, .col-4-left2 {
+        width: 10%;
+		font-weight:bold;
+		text-align:center;
+		padding:2px;font-size: 9pt; background-color:#D7ECF4; color:515151;
+}
+.col-2-right {
+        width: 90%;
+        padding-left: 5px;
+}
+
+.col-2-left2 {
+        width: 15%;
+		font-weight:bold;
+		text-align:center;
+		padding:2px;font-size: 9pt; background-color:#D7ECF4; color:555555;
+}
+
+.col-2-right2 {
+        width: 85%;
+        padding-left: 5px;
+}
+
+.col-4-right1 {
+        width: 23%;
+        padding-left: 5px;
+}
+
+.col-4-right2 {
+        width: 57%;
+        padding-left: 5px;
+}
+
+.w10per {
+        width: 10%;
+
+}
+
+/** For iPad **/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+div#wrapper  { width:758px;text-align:left; border:1px solid #AAAAAA; margin:0% auto; background-color:#FFFFFF;}
+	.grid {
+		width: 100%;
+		min-width: 0;
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+
+	tbody.pc_header {display:none;}
+	tbody.mobile_header {display:inline;}
+
+	.col-2-left2 {
+		width: 20%;
+	}
+
+	.col-2-right2 {
+		width: 80%;
+	}
+
+	td.mobile_title {
+		width: 72%;
+	}
+
+	td.mobile_logout {
+		width: 100%;
+	}
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/task
+		http://www.springframework.org/schema/task/spring-task-3.0.xsd"
+		default-autowire="byName">
+
+	<import resource="componentContext.xml"/>
+	<import resource="classpath:dataAccessContext.xml"/>
+
+<!-- ServiceクラスのTransactionalアノテーションが付与されているpublicメソッド実行時のみ実行する。 -->
+	<aop:config>
+		<aop:pointcut id="serviceOperation"
+			expression="execution(public * jp.co.tokaigroup.*.*.service.*ServiceImpl.*(..))
+						and @annotation(org.springframework.transaction.annotation.Transactional)"
+		/>
+	</aop:config>
+
+	<task:annotation-driven/>
+
+</beans>

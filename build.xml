@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BlankWar"  basedir="." default="all">
+
+
+	 <target name="war1">
+		<antcall target="war-build">
+			<param name="war_filename" value="demo.war" />
+			<param name="context_filename" value="context_demo.xml" />
+		</antcall>
+	 </target>
+
+	 <target name="war2">
+		<antcall target="war-build">
+			<param name="war_filename" value="TORES.war" />
+			<param name="context_filename" value="context_TORES.xml" />
+		</antcall>
+	 </target>
+
+
+	 <target name="war3">
+		<antcall target="war-build">
+			<param name="war_filename" value="TORESDev.war" />
+			<param name="context_filename" value="context_TORESDev.xml" />
+		</antcall>
+	 </target>
+
+	 <target name="war4">
+		<antcall target="war-build">
+			<param name="war_filename" value="TORESTest.war" />
+			<param name="context_filename" value="context_TORESTest.xml" />
+		</antcall>
+	 </target>
+
+
+
+	<target name="war-build" description="WARファイルを作成">
+		<delete  file="WebContent/META-INF/context.xml" />
+		<copy file="dist/${context_filename}" tofile="WebContent/META-INF/context.xml" />
+
+		<war destfile="${war_filename}" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent">
+				<exclude name="**/web.xml"/>
+				<exclude name="WEB-INF/test/**/*"/>
+				<exclude name="WEB-INF/test"/>
+				<exclude name="WEB-INF/lib/ojdbc14.jar"/>
+				<exclude name="WEB-INF/lib/p6spy.jar"/>
+				<exclude name="WEB-INF/lib/commons-dbcp-1.4.jar"/>
+				<exclude name="WEB-INF/lib/commons-pool-1.6.jar"/>
+				<exclude name="WEB-INF/jsp/dummy_login.jsp"/>
+				<exclude name="WEB-INF/jsp/dummy_menu.jsp"/>
+			</fileset>
+		</war>
+	</target>
+
+	<target name="all" depends="war1, war2, war3, war4" />
+
+</project>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.action.extension" value="action" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="sifw" />
+	<constant name="struts.freemarker.templatesCache" value="true" />
+	<constant name="struts.convention.result.path" value="/WEB-INF/jsp/"/>
+	<constant name="struts.locale" value="ja_JP" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.custom.i18n.resources" value="messageResource" />
+	<!-- 30MB (1024 * 1024 * 30 = 31,457,280 byte) -->
+	<constant name="struts.multipart.maxSize" value="31457280" />
+
+	<package name="default" extends="struts-default" abstract="true">
+
+		<interceptors>
+	 		<interceptor name="noChache"
+				class="jp.co.tokaigroup.si.fw.interceptor.NoChacheInterceptor" />
+			<interceptor name="exception"
+				class="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor">
+				<param name="logEnabled">true</param>
+				<param name="logLevel">error</param>
+				<param name="logCategory">jp.co.tokaigroup</param>
+			</interceptor>
+			<interceptor name="redirectMessage"
+				class="jp.co.tokaigroup.si.fw.interceptor.RedirectMessageInterceptor" />
+	 		<interceptor name="loginCheck"
+				class="jp.co.tokaigroup.si.fw.interceptor.LoginCheckInterceptor" />
+	 		<interceptor name="serviceValidation"
+				class="jp.co.tokaigroup.si.fw.interceptor.ServiceValidationInterceptor" />
+			<interceptor name="tokenSessionCheck"
+				class="jp.co.tokaigroup.tlcss_b2b.common.interceptor.TokenSessionInterceptor" />
+			<interceptor name="roleCheck"
+				class="jp.co.tokaigroup.tlcss_b2b.common.interceptor.RoleCheckInterceptor" />
+			<interceptor name="iPadCheck"
+				class="jp.co.tokaigroup.tlcss_b2b.common.interceptor.IPadCheckInterceptor" />
+
+	 		<interceptor-stack name="myStack">
+				<interceptor-ref name="noChache"/>
+				<interceptor-ref name="exception"/>
+				<interceptor-ref name="redirectMessage" />
+				<interceptor-ref name="alias"/>
+				<interceptor-ref name="params"/>
+				<interceptor-ref name="servletConfig"/>
+				<interceptor-ref name="prepare"/>
+				<interceptor-ref name="i18n"/>
+				<interceptor-ref name="chain"/>
+				<interceptor-ref name="modelDriven"/>
+				<interceptor-ref name="fileUpload"/>
+				<interceptor-ref name="checkbox">
+					<param name="uncheckedValue">0</param>
+				</interceptor-ref>
+				<interceptor-ref name="staticParams"/>
+				<interceptor-ref name="params"/>
+<!-- 			<interceptor-ref name="conversionError"/> -->
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+				<interceptor-ref name="loginCheck">
+					<param name="excludeURLs">
+						/index,/login,/dummyLogin,/dummyLoginExecute,/loginInit,/externalLogin
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="roleCheck">
+					<param name="excludeURLs">
+						/index,/login,/dummyLogin,/dummyLoginExecute,/loginInit,/externalLogin
+					</param>
+				</interceptor-ref>
+				<interceptor-ref name="iPadCheck" />
+				<interceptor-ref name="serviceValidation" />
+			</interceptor-stack>
+
+			<interceptor-stack name="downloadStack">
+				<interceptor-ref name="exception"/>
+				<interceptor-ref name="redirectMessage" />
+				<interceptor-ref name="alias"/>
+				<interceptor-ref name="params"/>
+				<interceptor-ref name="servletConfig"/>
+				<interceptor-ref name="prepare"/>
+				<interceptor-ref name="i18n"/>
+				<interceptor-ref name="chain"/>
+				<interceptor-ref name="modelDriven"/>
+				<interceptor-ref name="staticParams"/>
+				<interceptor-ref name="params"/>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+				<interceptor-ref name="loginCheck">
+					<param name="excludeURLs">
+						/index,/login,/dummyLogin,/dummyLoginExecute,/loginInit,/externalLogin
+					</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myStack" />
+		<default-action-ref name="index" />
+
+		<global-results>
+			<result name="message">/WEB-INF/common/jsp/message.jsp</result>
+			<result name="messageAndClose">/WEB-INF/common/jsp/messageAndClose.jsp</result>
+			<result name="blank">/WEB-INF/common/jsp/blank.jsp</result>
+			<result name="error">/WEB-INF/common/jsp/error.jsp</result>
+			<result name="notLoggedIn">/WEB-INF/common/jsp/notLoggedIn.jsp</result>
+			<result name="loginError">/WEB-INF/common/jsp/loginError.jsp</result>
+			<result name="invalid.token">/WEB-INF/common/html/403.html</result>
+			<result name="forbidden">/WEB-INF/common/html/403.html</result>
+			<result name="pageNotFound">/WEB-INF/common/html/404.html</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error"/>
+		</global-exception-mappings>
+
+		<action name="dummyLogin">
+			<result>/WEB-INF/jsp/dummy_login.jsp</result>
+		</action>
+		<action name="blank">
+			<result>/WEB-INF/common/jsp/blank.jsp</result>
+		</action>
+		<action name="pager">
+			<result>/WEB-INF/common/jsp/pager.jsp</result>
+		</action>
+		<action name="error">
+			<result>/WEB-INF/common/jsp/error.jsp</result>
+		</action>
+	</package>
+
+</struts>
