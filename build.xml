@@ -49,6 +49,13 @@
 				<exclude name="WEB-INF/jsp/dummy_login.jsp"/>
 				<exclude name="WEB-INF/jsp/dummy_menu.jsp"/>
 			</fileset>
+			<classes dir="build/classes">
+				<exclude name="template/mail/*"/>
+				<exclude name="TLCSSB2B_Environment.properties"/>
+				<exclude name="dataAccessContext.xml"/>
+				<exclude name="spy.properties"/>
+				<exclude name="log4j.xml"/>
+			</classes>
 		</war>
 	</target>
 

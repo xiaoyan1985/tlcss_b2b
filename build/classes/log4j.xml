@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+<!-- Appender settings -->
+  <!-- Console Appender -->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="DEBUG"/>
+    <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{loginId} [%X{sessionId}] %X{remoteAddr} %X{requestURL} %-5p (%F:%L) %m%n"/>
+    </layout>
+  </appender>
+
+  <!--sql log -->
+  <logger name="p6spy" additivity="false">
+    <level value="INFO" />
+    <appender-ref ref="CONSOLE" />
+  </logger>
+
+  <!-- application log -->
+  <category
+      name="jp.co.victokai.commons"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+  <category
+      name="jp.co.tokaigroup"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+   <!--Spring Transaction debug log -->
+   <category
+      name="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+      additivity="false">
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+  <category
+      name="jp.co.victokai.commons.db"
+      additivity="false">
+    <priority value="INFO"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+  <!-- other -->
+  <root>
+    <priority value="ERROR"/>
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</log4j:configuration>

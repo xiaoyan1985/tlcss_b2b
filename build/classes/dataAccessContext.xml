@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+		default-autowire="byName">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.75.14:1522:orcl2" />
+		<property name="username" value="RCP_DEV" />
+		<property name="password" value="RCP_DEV00" />
+		<property name="connection.autoCommit" value="false" />
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="natosSzDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.75.14:1521:orcl1" />
+		<property name="username" value="SZ_DEV" />
+		<property name="password" value="SZ_DEV00" />
+		<property name="connection.autoCommit" value="false" />
+	</bean>
+
+	<bean id="txManagerNatosSz"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="natosSzDataSource" />
+	</bean>
+
+	<bean id="natosKnDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.75.14:1521:orcl1" />
+
+		<property name="username" value="KN_DEV" />
+		<property name="password" value="KN_DEV00" />
+		<property name="connection.autoCommit" value="false" />
+	</bean>
+
+	<bean id="txManagerNatosKn"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="natosKnDataSource" />
+	</bean>
+
+	<bean id="sosDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.75.14:1522:orcl2" />
+
+		<property name="username" value="SOS_DEV" />
+		<property name="password" value="SOS_DEV00" />
+		<property name="connection.autoCommit" value="false" />
+	</bean>
+
+	<bean id="txManagerSos"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="sosDataSource" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="txManager" />
+</beans>
