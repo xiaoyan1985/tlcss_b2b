@@ -39,15 +39,15 @@
 
 		<war destfile="${war_filename}" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent">
-				<include name="**/web.xml"/>
-				<include name="WEB-INF/test/**/*"/>
-				<include name="WEB-INF/test"/>
-				<include name="WEB-INF/lib/ojdbc14.jar"/>
-				<include name="WEB-INF/lib/p6spy.jar"/>
-				<include name="WEB-INF/lib/commons-dbcp-1.4.jar"/>
-				<include name="WEB-INF/lib/commons-pool-1.6.jar"/>
-				<include name="WEB-INF/jsp/dummy_login.jsp"/>
-				<include name="WEB-INF/jsp/dummy_menu.jsp"/>
+				<exclude name="**/web.xml"/>
+				<exclude name="WEB-INF/test/**/*"/>
+				<exclude name="WEB-INF/test"/>
+				<exclude name="WEB-INF/lib/ojdbc14.jar"/>
+				<exclude name="WEB-INF/lib/p6spy.jar"/>
+				<exclude name="WEB-INF/lib/commons-dbcp-1.4.jar"/>
+				<exclude name="WEB-INF/lib/commons-pool-1.6.jar"/>
+				<exclude name="WEB-INF/jsp/dummy_login.jsp"/>
+				<exclude name="WEB-INF/jsp/dummy_menu.jsp"/>
 			</fileset>
 			<classes dir="build/classes">
 				<include name="template/mail/*"/>
