@@ -26,7 +26,7 @@
 
 	<bean id="natosSzDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
  		<property name="driverClassName" value="com.p6spy.engine.spy.P6SpyDriver" />
-		<property name="url" value="jdbc:oracle:thin:@192.168.75.14:1521:XE" />
+		<property name="url" value="jdbc:oracle:thin:@172.17.0.2:1521:XE" />
 		<property name="username" value="SZ_DEV" />
 		<property name="password" value="SZ_DEV00" />
 		<property name="connection.autoCommit" value="false" />
